@@ -28,9 +28,9 @@ fn render(framebuffer: &mut Framebuffer, current_state: &Vec<Vec<bool>>) -> Vec<
             }
 
             if next_state[y][x] {
-                framebuffer.set_current_color(0x8884FF); // White for live cells
+                framebuffer.set_current_color(0x81C14B); 
             } else {
-                framebuffer.set_current_color(0x45F0DF); // Black for dead cells
+                framebuffer.set_current_color(0x204E4A); 
             }
 
             framebuffer.point(x, y);
@@ -93,7 +93,7 @@ fn main() {
 
     let mut current_state = vec![vec![false; framebuffer_width]; framebuffer_height];
 
-    // Define patterns
+    // Organismos
     let glider = &[(1, 0), (2, 1), (0, 2), (1, 2), (2, 2)];
     let toad = &[(1, 0), (2, 0), (3, 0), (0, 1), (1, 1), (2, 1)];
     let loaf = &[(1, 0), (2, 0), (0, 1), (3, 1), (1, 2), (3, 2), (2, 3)];
@@ -112,22 +112,68 @@ fn main() {
     ];
 
 
-    // Place patterns in the initial state
+    // Patron inicial
+    
     set_pattern(&mut current_state, glider, 5, 5);
     set_pattern(&mut current_state, glider, 0, 10);
     set_pattern(&mut current_state, toad, 10, 20);
     set_pattern(&mut current_state, loaf, 20, 35);
+    set_pattern(&mut current_state, loaf, 80, 35);
     set_pattern(&mut current_state, boat, 30, 50);
     set_pattern(&mut current_state, middle_weight_spaceship, 50, 10);
     set_pattern(&mut current_state, tub, 70, 20);
     set_pattern(&mut current_state, block, 15, 75);
     set_pattern(&mut current_state, bee_hive, 50, 50);
-    set_pattern(&mut current_state, pulsar, 70, 70); // Adding Pulsar pattern
+    set_pattern(&mut current_state, pulsar, 70, 70);
     set_pattern(&mut current_state, glider, 50, 60);
     set_pattern(&mut current_state, toad, 60, 30);
+    set_pattern(&mut current_state, toad, 70, 65);
     set_pattern(&mut current_state, loaf, 40, 80);
     set_pattern(&mut current_state, boat, 25, 90);
+    set_pattern(&mut current_state, pulsar, 10, 50);
+    set_pattern(&mut current_state, pulsar, 80, 10);
+   
     
+    
+    set_pattern(&mut current_state, loaf, 20, 5);
+    set_pattern(&mut current_state, loaf, 40, 5);
+    set_pattern(&mut current_state, loaf, 60, 5);
+    set_pattern(&mut current_state, loaf, 80, 5);
+    set_pattern(&mut current_state, loaf, 80, 90);
+    set_pattern(&mut current_state, loaf, 60, 90);
+    set_pattern(&mut current_state, loaf, 40, 90);
+    set_pattern(&mut current_state, loaf, 20, 90);
+
+    set_pattern(&mut current_state, pulsar, 45, 45);
+    set_pattern(&mut current_state, pulsar, 40, 50);
+
+    set_pattern(&mut current_state, boat, 30, 80);
+    set_pattern(&mut current_state, boat, 50, 80);
+    set_pattern(&mut current_state, boat, 70, 80);
+
+    set_pattern(&mut current_state, tub, 30, 15);
+    set_pattern(&mut current_state, tub, 50, 15);
+    set_pattern(&mut current_state, tub, 70, 15);
+
+    set_pattern(&mut current_state, bee_hive, 40, 25);
+    set_pattern(&mut current_state, bee_hive, 60, 25);
+
+    set_pattern(&mut current_state, block, 40, 70);
+    set_pattern(&mut current_state, block, 60, 70);
+
+    set_pattern(&mut current_state, toad, 35, 50);
+    set_pattern(&mut current_state, toad, 65, 50);
+
+    set_pattern(&mut current_state, middle_weight_spaceship, 50, 40);
+    set_pattern(&mut current_state, middle_weight_spaceship, 50, 55);
+
+    set_pattern(&mut current_state, glider, 40, 40);
+    set_pattern(&mut current_state, glider, 30, 40);
+    set_pattern(&mut current_state, glider, 50, 40);
+    set_pattern(&mut current_state, glider, 50, 40);
+
+    set_pattern(&mut current_state, pulsar, 45, 10);
+    set_pattern(&mut current_state, pulsar, 45, 90);
 
     while window.is_open() {
         // Listen to inputs
