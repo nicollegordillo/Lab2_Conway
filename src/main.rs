@@ -111,9 +111,40 @@ fn main() {
         (0, 10), (5, 10), (7, 10), (12, 10), (2, 12), (3, 12), (4, 12), (8, 12), (9, 12), (10, 12)
     ];
 
+    fn set_pattern(state: &mut Vec<Vec<bool>>, pattern: &[(usize, usize)], offset_x: usize, offset_y: usize) {
+        for &(x, y) in pattern {
+            state[y + offset_y][x + offset_x] = true;
+        }
+    }
 
+    // Set patterns to form 3 diagonal lines
+
+    // Diagonal from top-left to bottom-right
+    for i in (0..80).step_by(10) {
+        set_pattern(&mut current_state, glider, i, i);
+        set_pattern(&mut current_state, toad, i + 5, i);
+        set_pattern(&mut current_state, loaf, i, i + 5);
+        set_pattern(&mut current_state, boat, i + 5, i + 5);
+    }
+
+    // Diagonal from bottom-left to top-right
+    for i in (0..80).step_by(10) {
+        set_pattern(&mut current_state, middle_weight_spaceship, i, 90 - i);
+        set_pattern(&mut current_state, tub, i + 5, 90 - i);
+        set_pattern(&mut current_state, block, i, 85 - i);
+        set_pattern(&mut current_state, bee_hive, i + 5, 85 - i);
+    }
+
+    // Diagonal in the center
+    for i in (0..80).step_by(10) {
+        set_pattern(&mut current_state, pulsar, i + 10, i + 10);
+        set_pattern(&mut current_state, glider, i + 15, i + 10);
+        set_pattern(&mut current_state, toad, i + 10, i + 15);
+        set_pattern(&mut current_state, loaf, i + 15, i + 15);
+    }
+    set_pattern(&mut current_state, pulsar, 45, 80);
     // Patron inicial
-    
+    /*
     set_pattern(&mut current_state, glider, 5, 5);
     set_pattern(&mut current_state, glider, 0, 10);
     set_pattern(&mut current_state, toad, 10, 20);
@@ -173,7 +204,7 @@ fn main() {
     set_pattern(&mut current_state, glider, 50, 40);
 
     set_pattern(&mut current_state, pulsar, 45, 10);
-    set_pattern(&mut current_state, pulsar, 45, 90);
+    set_pattern(&mut current_state, pulsar, 45, 90);*/
 
     while window.is_open() {
         // Listen to inputs
